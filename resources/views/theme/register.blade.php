@@ -11,14 +11,14 @@
     </nav>
 @endsection
 
+{{-- action="{{ route('register') }}" --}}
 
 <!-- ================ contact section start ================= -->
 <section class="section-margin--small section-margin">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form action="#/" class="form-contact contact_form" action="contact_process.php" method="post"
-                    id="contactForm" novalidate="novalidate">
+                <form method="POST" class="form-contact contact_form" id="contactForm" novalidate="novalidate">
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
@@ -42,6 +42,7 @@
                         </div>
                     </div>
                     <div class="form-group text-center text-md-right mt-3">
+                        <a href="{{ route('front.login') }}" class="mx-3 text-dark">Has Account!</a>
                         <button type="submit" class="button button--active button-contactForm">Register</button>
                     </div>
                 </form>

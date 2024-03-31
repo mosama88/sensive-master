@@ -27,6 +27,7 @@
                             placeholder="Enter your password">
                     </div>
                     <div class="form-group text-center text-md-right mt-3">
+                        <a href="{{ route('front.register') }}" class="mx-3 text-dark">Create Account!</a>
                         <button type="submit" class="button button--active button-contactForm">Login</button>
                     </div>
                 </form>
