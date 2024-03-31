@@ -1,4 +1,5 @@
 @extends('layouts.front.master')
+@section('title-page', 'Contact')
 @section('content')
 @section('contact-active', 'active')
 @section('hero-description', 'Contact Us')
