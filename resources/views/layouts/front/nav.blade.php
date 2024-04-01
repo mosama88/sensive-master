@@ -1,3 +1,8 @@
+@php
+    use App\Models\Category;
+    // $categoriesnav = Category::get();
+    $categoriesnav = Category::take(3)->get();
+@endphp
 <header class="header_area">
     <div class="main_menu">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -18,16 +23,19 @@
                             <li class="nav-item @yield('home-active')"><a class="nav-link"
                                     href="{{ route('front.index') }}">Home</a></li>
                             @auth
+
                                 <li class="nav-item submenu dropdown @yield('category-active')">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                         aria-haspopup="true" aria-expanded="false">Categories</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ route('front.category') }}">Food</a>
-                                        </li>
-                                        <li class="nav-item"><a class="nav-link" href="blog-details.html">Bussiness</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="blog-details.html">Travel</a></li>
-                                    </ul>
+                                    @if (count($categoriesnav) > 0)
+                                        <ul class="dropdown-menu">
+                                            @foreach ($categoriesnav as $cat)
+                                                <li class="nav-item"><a class="nav-link"
+                                                        href="{{ route('front.category') }}">{{ $cat->name }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
                                 </li>
                                 <li class="nav-item @yield('contact-active')"><a class="nav-link"
                                         href="{{ route('front.contact') }}">Contact</a></li>
