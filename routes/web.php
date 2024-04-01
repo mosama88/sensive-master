@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ThemeController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
 
@@ -16,8 +17,12 @@ Route::controller(ThemeController::class)->name('front.')->middleware('auth')->g
 });
 
 
-// Subscriber Route
+// Subscriber store Route
 Route::post('subscriber/store',[SubscriberController::class,'store'])->name('subscriber.store');
+
+// Contact store Route
+Route::post('contact/store',[ContactController::class,'store'])->name('contact.store');
+
 
 
 // Middleware Route
