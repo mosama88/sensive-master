@@ -15,31 +15,30 @@
                 <div class="single-footer-widget">
                     <h6>Newsletter</h6>
                     <p>Stay update with our latest</p>
-                    <div class="" id="mc_embed_signup">
+                    <div class="">
 
-                        <form target="_blank" novalidate="true"
-                            action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                            method="get" class="form-inline">
-
+                        <form action="{{ route('subscriber.store') }}" method="POST" class="form-inline">
+                            @csrf
                             <div class="d-flex flex-row">
 
-                                <input class="form-control" name="EMAIL" placeholder="Enter Email"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
-                                    required="" type="email">
+                                <input class="form-control" name="email" placeholder="Enter Email" type="email">
 
+                                <button type="submit" class="click-btn btn btn-default">
+                                    <span class="lnr lnr-arrow-right"></span>
+                                </button>
 
-                                <button class="click-btn btn btn-default"><span
-                                        class="lnr lnr-arrow-right"></span></button>
-                                <div style="position: absolute; left: -5000px;">
-                                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1"
-                                        value="" type="text">
-                                </div>
 
                                 <!-- <div class="col-lg-4 col-md-4">
-                    <button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
-                  </div>  -->
+                                    <button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
+                                </div>  -->
                             </div>
                             <div class="info"></div>
+                            {{-- Named Error Bages --}}
+                            @error('email')
+                                <div class="alert alert-danger text-center p-1 my-2">
+                                    <span>{{ $message }}</span>
+                                </div>
+                            @enderror
                         </form>
                     </div>
                 </div>

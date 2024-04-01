@@ -1,14 +1,29 @@
 <div class="col-lg-4 sidebar-widgets">
     <div class="widget-wrap">
         <div class="single-sidebar-widget newsletter-widget">
+            @if (session('success') != null)
+                <div class="alert alert-success text-center">
+                    {{ session('success') }}
+                </div>
+            @endif
             <h4 class="single-sidebar-widget__title">Newsletter</h4>
             <div class="form-group mt-30">
                 <div class="col-autos">
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email"
-                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
+                    <form action="{{ route('subscriber.store') }}" method="post">
+                        @csrf
+                        <input type="text" class="form-control" name="email" id="inlineFormInputGroup"
+                            placeholder="Enter email" onfocus="this.placeholder = ''"
+                            onblur="this.placeholder = 'Enter email'">
+                        {{-- Named Error Bages --}}
+                        @error('email')
+                            <div class="alert alert-danger text-center p-1 my-2">
+                                <span>{{ $message }}</span>
+                            </div>
+                        @enderror
                 </div>
             </div>
-            <button class="bbtns d-block mt-20 w-100">Subcribe</button>
+            <input type="submit" value="Subcribe" class="bbtns d-block mt-20 w-100">
+            </form>
         </div>
 
         <div class="single-sidebar-widget post-category-widget">

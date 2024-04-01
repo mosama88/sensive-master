@@ -24,12 +24,4 @@ class ThemeController extends Controller
     }
 
 
-    public function register(){
-        return view('theme.register');
-    }
-
-
-    public function login(){
-        return view('theme.login');
-    }
 }
