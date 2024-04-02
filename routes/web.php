@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
@@ -23,7 +25,8 @@ Route::post('subscriber/store',[SubscriberController::class,'store'])->name('sub
 // Contact store Route
 Route::post('contact/store',[ContactController::class,'store'])->name('contact.store');
 
-
+// Blog Resource Route
+Route::resource('blogs',BlogController::class);
 
 // Middleware Route
 Route::get('/dashboard', function () {
