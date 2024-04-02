@@ -1,7 +1,7 @@
 @php
     use App\Models\Category;
     // $categoriesnav = Category::get();
-    $categoriessidebar = Category::take(6)->get();
+    $categoriessidebar = Category::get();
 @endphp
 
 <div class="col-lg-4 sidebar-widgets">
@@ -37,7 +37,8 @@
                 <ul class="cat-list mt-20">
                     @foreach ($categoriessidebar as $cat)
                         <li>
-                            <a href="#" class="d-flex justify-content-between">
+                            <a href="{{ route('front.category', ['id' => $cat->id]) }}"
+                                class="d-flex justify-content-between">
                                 <p>{{ $cat->name }}</p>
                                 <p>(03)</p>
                             </a>

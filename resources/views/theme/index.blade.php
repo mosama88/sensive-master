@@ -108,11 +108,12 @@
                                     </ul>
                                 </div>
                                 <div class="details mt-20">
-                                    <a href="blog-single.html">
+                                    <a href="{{ route('blogs.show', $blog->id) }}">
                                         <h3>{{ $blog->name }}</h3>
                                     </a>
                                     <p>{{ Str::limit($blog->description, 200) }}</p>
-                                    <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
+                                    <a class="button" href="{{ route('blogs.show', ['blog' => $blog->id]) }}">Read More
+                                        <i class="ti-arrow-right"></i></a>
                                 </div>
                             </div>
                         @endforeach

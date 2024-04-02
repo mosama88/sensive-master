@@ -31,7 +31,7 @@
                                         <ul class="dropdown-menu">
                                             @foreach ($categoriesnav as $cat)
                                                 <li class="nav-item"><a class="nav-link"
-                                                        href="{{ route('front.category') }}">{{ $cat->name }}</a>
+                                                        href="{{ route('front.category', ['id' => $cat->id]) }}">{{ $cat->name }}</a>
                                                 </li>
                                             @endforeach
                                         </ul>
