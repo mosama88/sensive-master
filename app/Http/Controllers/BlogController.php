@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreBlogRequest;
 
 class BlogController extends Controller
 {
@@ -15,9 +16,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+//
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -35,11 +35,23 @@ class BlogController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in storage.    
      */
-    public function store(Request $request)
+    public function store( StoreBlogRequest $request)
     {
-        //
+        // dd($request->image);
+        $data = $request->validated();
+// 1- Get Image
+        $image = $request->image;
+// 2- Change it's current name
+        $newImageName = time() . '-' . $image->getClientOriginalName();
+// 3- Move Image To My Project
+        $image->storeAs('blogs' , $newImageName, 'public');  //blogs Folder in storage/app/public  -  public folder in Public Access Users
+// 4- Save New Name To Database Recored
+        $data['image'] = $newImageName;
+        $data['user_id'] = Auth::user()->id;
+        Blog::create($data);
+        return to_route('blogs.create')->with('success','Data Added Successfully');
     }
 
     /**
