@@ -112,7 +112,7 @@
                                         <h3>{{ $blog->name }}</h3>
                                     </a>
                                     <p>{{ Str::limit($blog->description, 200) }}</p>
-                                    <a class="button" href="{{ route('blogs.show', ['blog' => $blog->id]) }}">Read More
+                                    <a class="button" href="{{ route('blogs.show', ['blog' => $blog]) }}">Read More
                                         <i class="ti-arrow-right"></i></a>
                                 </div>
                             </div>

@@ -55,6 +55,9 @@
                                         <li class="nav-item"><a class="nav-link"
                                                 href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
                                         </li>
+                                        <li class="nav-item"><a class="nav-link" href="{{ route('blogs.my-blogs') }}">My
+                                                Blogs</a>
+                                        </li>
                                         <li class="nav-item">
                                             <form method="POST" action="{{ route('logout') }}">
                                                 @csrf

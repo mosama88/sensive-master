@@ -68,7 +68,9 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        $blog = Blog::where($blog->id, 'id');
+
+        return view('theme.blogs.edit',compact('blog') );
     }
 
     /**
@@ -86,4 +88,19 @@ class BlogController extends Controller
     {
         //
     }
+
+//Display users Blogs
+    public function myBlogs()
+    {
+        if(Auth::check()){
+            $blogs = Blog::where('user_id', Auth::user()->id)->paginate(5);
+            return view('theme.blogs.my-blogs',compact('blogs') );
+        }else{
+            // abort(403);
+            return back();
+        }
+
+
+    }
+    
 }

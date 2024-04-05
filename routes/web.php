@@ -26,6 +26,7 @@ Route::post('subscriber/store',[SubscriberController::class,'store'])->name('sub
 Route::post('contact/store',[ContactController::class,'store'])->name('contact.store');
 
 // Blog Resource Route
+Route::get('/my-blogs',[BlogController::class, 'myBlogs'])->name('blogs.my-blogs');
 Route::resource('blogs',BlogController::class);
 
 // Middleware Route
